@@ -1,15 +1,15 @@
-name: Psychology Facts Video Automation
+name: Motivation Video Automation
 
 on:
   schedule:
-    # Run every day at 9:00 AM IST (3:30 AM UTC)
-    - cron: '30 3 * * *'
+    # Run every day at 3:00 PM IST (9:30 AM UTC)
+    - cron: '30 9 * * *'
   
   # Allow manual triggering from GitHub UI
   workflow_dispatch:
 
 jobs:
-  generate-psych-video:
+  generate-motivation-video:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -27,8 +27,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.WORKFLOW_PAT }}
       run: |
         echo "Creating media directories..."
-        mkdir -p psych_temp
-        mkdir -p psych_music
+        mkdir -p motiv_temp
+        mkdir -p motiv_music
         
         # Function to download files safely
         download_file() {
@@ -42,39 +42,39 @@ jobs:
         }
 
         echo "Downloading video templates..."
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/beach_bright_beach.mp4.mp4" "psych_temp/beach_bright_beach.mp4.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/Blue_Sea.mp4" "psych_temp/Blue_Sea.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/butterflies.mp4" "psych_temp/butterflies.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/dawn.mp4" "psych_temp/dawn.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/forest.mp4" "psych_temp/forest.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/icea.mp4" "psych_temp/icea.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/jellyfish.mp4" "psych_temp/jellyfish.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/mountains.mp4" "psych_temp/mountains.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/Orange_Good_Morning.mp4" "psych_temp/Orange_Good_Morning.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/pool.mp4" "psych_temp/pool.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/roadtrip.mp4" "psych_temp/roadtrip.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/sad_rain.mp4" "psych_temp/sad_rain.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/seagull.mp4" "psych_temp/seagull.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/senet.mp4" "psych_temp/senet.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/sunflower.mp4" "psych_temp/sunflower.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/Sunset.mp4" "psych_temp/Sunset.mp4"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/Yellow_sea.mp4" "psych_temp/Yellow_sea.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/beach_bright_beach.mp4.mp4" "motiv_temp/beach_bright_beach.mp4.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/Blue_Sea.mp4" "motiv_temp/Blue_Sea.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/butterflies.mp4" "motiv_temp/butterflies.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/dawn.mp4" "motiv_temp/dawn.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/forest.mp4" "motiv_temp/forest.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/icea.mp4" "motiv_temp/icea.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/jellyfish.mp4" "motiv_temp/jellyfish.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/mountains.mp4" "motiv_temp/mountains.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/Orange_Good_Morning.mp4" "motiv_temp/Orange_Good_Morning.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/pool.mp4" "motiv_temp/pool.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/roadtrip.mp4" "motiv_temp/roadtrip.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/sad_rain.mp4" "motiv_temp/sad_rain.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/seagull.mp4" "motiv_temp/seagull.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/senet.mp4" "motiv_temp/senet.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/sunflower.mp4" "motiv_temp/sunflower.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/Sunset.mp4" "motiv_temp/Sunset.mp4"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/Yellow_sea.mp4" "motiv_temp/Yellow_sea.mp4"
 
         echo "Downloading music files..."
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/Big_10_TrackTribe.mp3" "psych_music/Big_10_TrackTribe.mp3"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/Cartier_Anno_Domini.mp3" "psych_music/Cartier_Anno_Domini.mp3"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/HITR.mp3" "psych_music/HITR.mp3"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/IDFC_Naruto.mp3" "psych_music/IDFC_Naruto.mp3"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/man_sigma.mp3" "psych_music/man_sigma.mp3"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/Mission_edit.mp3" "psych_music/Mission_edit.mp3"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/nocopyright_bgm.mp3" "psych_music/nocopyright_bgm.mp3"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/Red_Anno_Domini.mp3" "psych_music/Red_Anno_Domini.mp3"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/Sacrifices_edit_12sec.mp3" "psych_music/Sacrifices_edit_12sec.mp3"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/Shy_people.mp3" "psych_music/Shy_people.mp3"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/soft_bgm.mp3" "psych_music/soft_bgm.mp3"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/Steps_ad.mp3" "psych_music/Steps_ad.mp3"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/Talk_ad.mp3" "psych_music/Talk_ad.mp3"
-        download_file "https://github.com/Abhi-9479/psych-video-automation/releases/download/v1.0-assets/whoosh.mp3" "psych_music/whoosh.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/Big_10_TrackTribe.mp3" "motiv_music/Big_10_TrackTribe.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/Cartier_Anno_Domini.mp3" "motiv_music/Cartier_Anno_Domini.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/HITR.mp3" "motiv_music/HITR.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/IDFC_Naruto.mp3" "motiv_music/IDFC_Naruto.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/man_sigma.mp3" "motiv_music/man_sigma.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/Mission_edit.mp3" "motiv_music/Mission_edit.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/nocopyright_bgm.mp3" "motiv_music/nocopyright_bgm.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/Red_Anno_Domini.mp3" "motiv_music/Red_Anno_Domini.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/Sacrifices_edit_12sec.mp3" "motiv_music/Sacrifices_edit_12sec.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/Shy_people.mp3" "motiv_music/Shy_people.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/soft_bgm.mp3" "motiv_music/soft_bgm.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/Steps_ad.mp3" "motiv_music/Steps_ad.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/Talk_ad.mp3" "motiv_music/Talk_ad.mp3"
+        download_file "https://github.com/Abhi-9479/motivation-video-automation/releases/download/v1.0-assets/whoosh.mp3" "motiv_music/whoosh.mp3"
 
     # Step 3: Set up Python
     - name: 🐍 Set up Python 3.12.10
@@ -113,9 +113,9 @@ jobs:
         echo "GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }}" > .env
     
     # Step 8: Run your main Python script
-    - name: 🚀 Generate and upload psychology video
+    - name: 🚀 Generate and upload motivation video
       run: |
-        python psych_git.py
+        python motiv_git.py
       env:
         GITHUB_ACTIONS: true
         PYTHONPATH: ${{ github.workspace }}
@@ -125,7 +125,7 @@ jobs:
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add psych_temp/last_video_index.txt
+        git add motiv_temp/last_video_index.txt
         git diff-index --quiet HEAD || git commit -m "Update last used video index"
         git push
         
@@ -134,7 +134,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: psych-video-${{ github.run_number }}
+        name: motivation-video-${{ github.run_number }}
         path: "quote_*.mp4"
         retention-days: 7
     
@@ -142,5 +142,5 @@ jobs:
     - name: 📧 Notify on failure
       if: failure()
       run: |
-        echo "❌ Psychology video automation failed!"
+        echo "❌ Motivation video automation failed!"
         echo "Check the logs above for details."
